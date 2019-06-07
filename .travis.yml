@@ -1,0 +1,21 @@
+sudo: required
+
+language: node_js
+node_js:
+    - "8"
+    - "7"
+    - "6"
+
+env:
+  COMMIT: ${TRAVIS_COMMIT::8}
+  MAIN_REPO: https://github.com/yeeeshiuan/client.git
+
+before_script:
+  - cd client
+  - yarn install
+
+script:
+  - yarn test
+
+after_success:
+  - echo "success"
