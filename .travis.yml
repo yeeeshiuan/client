@@ -29,7 +29,6 @@ install:
   - gcloud config set project quantum-device-226712
 
 before_script:
-  - cd client
   - yarn install
 
 script:
