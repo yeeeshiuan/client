@@ -33,7 +33,7 @@ before_script:
 
 script:
   - yarn test
-    # Deploy the app with debug messages
-  - gcloud -q app deploy app.yaml --promote --verbosity=debug
+    # Deploy the app
+  - gcloud -q app deploy app.yaml --promote
 after_success:
   - echo "success"
