@@ -2,8 +2,7 @@ sudo: required
 
 language: node_js
 node_js:
-    - "10"
-    - "11"
+    - "8"
 
 # Cache our Gcloud SDK between commands
 cache:
@@ -33,7 +32,6 @@ before_script:
 
 script:
   - yarn test
+  - yarn build
     # Deploy the app
   - gcloud -q app deploy app.yaml --promote
-after_success:
-  - echo "success"
