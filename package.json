@@ -1,0 +1,6 @@
+{
+  "name": "client-end2end",
+  "devDependencies": {
+    "cypress": "^3.3.1"
+  }
+}
