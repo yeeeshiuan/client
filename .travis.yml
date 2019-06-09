@@ -24,10 +24,11 @@ before_install:
 - gcloud auth activate-service-account --key-file client-secret.json
 # [END auth]
 install:
-  # Set the correct project to deploy to
+  # Set the correct project to deploy
   - gcloud config set project quantum-device-226712
 
 before_script:
+  - cd client
   - yarn install
 
 script:
