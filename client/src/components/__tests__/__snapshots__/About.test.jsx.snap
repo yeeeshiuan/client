@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`About renders a snapshot properly 1`] = `
+<div>
+  <p>
+    This is my App.(About)
+  </p>
+</div>
+`;
