@@ -25,7 +25,7 @@ before_install:
 # [END auth]
 install:
   # Set the correct project to deploy
-  - gcloud config set project quantum-device-226712
+  - gcloud config set project $googleAppId
 
 before_script:
   - cd client
@@ -36,3 +36,7 @@ script:
   - yarn build
     # Deploy the app
   - gcloud -q app deploy app.yaml --promote
+    # end2end test
+  - cd ..
+  - yarn install
+  - ./node_modules/.bin/cypress run --config baseUrl=$googleAppWebsite
