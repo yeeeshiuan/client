@@ -20,13 +20,17 @@ class Main extends Component {
 
         const options = {
             method: 'GET',
-            url: `https://quality.data.gov.tw/dq_download_json.php?nid=29947&md5_url=9ddc3290bbec618eadd9f53869acf542`,
+            headers: {
+                'Content-Type': 'application/text',
+            },
+            url: `https://bypasscors.herokuapp.com/api/?url=https://quality.data.gov.tw/dq_download_json.php?nid=29947&md5_url=9ddc3290bbec618eadd9f53869acf542`,
         };
 
         axios(options)
-        .then(res => { 
-            this.setState({ data:res.data });
-            console.log(res.data);
+        .then(response => { 
+
+            this.setState({ data:response.data });
+            console.log(response.data);
         })
     }
 
