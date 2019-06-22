@@ -5,5 +5,21 @@ exports[`Main renders a snapshot properly 1`] = `
   <p>
     This is my App.(Main)
   </p>
+  <div
+    style={
+      Object {
+        "height": 200,
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+  </div>
 </div>
 `;
