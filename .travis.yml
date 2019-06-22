@@ -7,36 +7,50 @@ node_js:
 # Cache our Gcloud SDK between commands
 cache:
   directories:
-  - "$HOME/google-cloud-sdk/"
+    # We cache the SDK so we don't have to download it again on subsequent builds.
+    - $HOME/google-cloud-sdk
 
 env:
   COMMIT: ${TRAVIS_COMMIT::8}
   MAIN_REPO: https://github.com/yeeeshiuan/client.git
+  global:
+    # Do not prompt for user input when using any SDK methods.
+    - CLOUDSDK_CORE_DISABLE_PROMPTS=1 
 
 before_install:
-# [START auth]
-# Decrypt the credentials we added to the repo using the key we added with the Travis command line tool
-- openssl aes-256-cbc -K $encrypted_a961cf136008_key -iv $encrypted_a961cf136008_iv -in credentials.tar.gz.enc -out credentials.tar.gz -d
+    # gcloud version update and check
+    - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf "$HOME/google-cloud-sdk"; curl https://sdk.cloud.google.com | bash > /dev/null; fi
 
-- tar -xzf credentials.tar.gz
-- mkdir -p lib
-# Here we use the decrypted service account credentials to authenticate the command line tool
-- gcloud auth activate-service-account --key-file client-secret.json
-# [END auth]
+    # This line is critical. We setup the SDK to take precedence in our
+    # environment over the old SDK that is already on the machine.
+    - source $HOME/google-cloud-sdk/path.bash.inc
+    - gcloud components update
+    - gcloud version
+
+    # [START auth]
+    # Decrypt the credentials we added to the repo using the key we added with the Travis command line tool
+    - openssl aes-256-cbc -K $encrypted_a961cf136008_key -iv $encrypted_a961cf136008_iv -in credentials.tar.gz.enc -out credentials.tar.gz -d
+
+    - tar -xzf credentials.tar.gz
+    - mkdir -p lib
+    # Here we use the decrypted service account credentials to authenticate the command line tool
+    - gcloud auth activate-service-account --key-file client-secret.json
+    # [END auth]
 install:
-  # Set the correct project to deploy
-  - gcloud config set project $googleAppId
+    # Set the correct project to deploy
+    - gcloud config set project $googleAppId
 
 before_script:
-  - cd client
-  - yarn install
+    - cd client
+    - export REACT_APP_API_DOMAIN_NAME_URL=$apiWebsite
+    - yarn install
 
 script:
-  - yarn test
-  - yarn build
+    - yarn test
+    - yarn build
     # Deploy the app
-  - gcloud -q app deploy app.yaml --promote
+    - gcloud -q app deploy app.yaml --promote
     # end2end test
-  - cd ..
-  - yarn install
-  - ./node_modules/.bin/cypress run --config baseUrl=$googleAppWebsite
+    - cd ..
+    - yarn install
+    - ./node_modules/.bin/cypress run --config baseUrl=$googleAppWebsite

@@ -13,17 +13,17 @@ class Main extends Component {
 
     componentDidMount() {
     // if there is no channel name there, get the top stream channel
-        this.getData();
+        this.getData("thermalPowerGenerationCO2");
     }
 
-    getData() {
+    getData(apiKey) {
 
         const options = {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/text',
+                'Content-Type': 'application/json',
             },
-            url: `https://bypasscors.herokuapp.com/api/?url=https://quality.data.gov.tw/dq_download_json.php?nid=29947&md5_url=9ddc3290bbec618eadd9f53869acf542`,
+            url: `${process.env.REACT_APP_API_DOMAIN_NAME_URL}/base/api/` + apiKey,
         };
 
         axios(options)
