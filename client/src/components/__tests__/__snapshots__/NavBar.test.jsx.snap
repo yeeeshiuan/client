@@ -2,48 +2,69 @@
 
 exports[`NavBar renders a snapshot properly 1`] = `
 <nav
-  aria-label="main navigation"
   className="navbar is-dark"
   role="navigation"
+  style={Object {}}
 >
-  <section
-    className="container"
+  <div
+    className="navbar-brand"
+    style={Object {}}
   >
-    <div
-      className="navbar-brand"
+    <a
+      className="navbar-item"
+      href="#"
+      style={Object {}}
     >
       <a
         className="navbar-item"
         href="/"
-        onClick={[Function]}
+        style={Object {}}
       />
-      <span
-        className="nav-toggle navbar-burger"
-        onClick={[Function]}
+    </a>
+    <div
+      className="navbar-burger"
+      onClick={[Function]}
+      role="button"
+      style={
+        Object {
+          "outline": "none",
+        }
+      }
+      tabIndex="0"
+    >
+      <span />
+      <span />
+      <span />
+    </div>
+  </div>
+  <div
+    className="navbar-menu"
+    style={Object {}}
+  >
+    <div
+      className="navbar-start"
+      style={Object {}}
+    >
+      <a
+        className="navbar-item"
+        href="/about"
+        style={Object {}}
       >
-        <span />
-        <span />
-        <span />
-      </span>
+        About
+      </a>
     </div>
     <div
-      className="navbar-menu"
+      className="navbar-end"
+      style={Object {}}
     >
-      <div
-        className="navbar-start"
+      <a
+        className="navbar-item"
+        href="#"
+        style={Object {}}
       >
-        <a
-          className="navbar-item"
-          href="/about"
-          onClick={[Function]}
-        >
-          About
-        </a>
-      </div>
-      <div
-        className="navbar-end"
-      />
+        At the end
+      </a>
     </div>
-  </section>
+  </div>
 </nav>
 `;

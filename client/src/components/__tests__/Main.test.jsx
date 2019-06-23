@@ -17,6 +17,13 @@ test('Main contain a p tag', () => {
   expect(p.get(0).props.children).toBe('This is my App.(Main)');
 });
 
+test('Main will call componentDidMount when mounted', () => {
+  const onDidMount = jest.fn();
+  Main.prototype.componentDidMount = onDidMount;
+  const wrapper = mount(<Router><Main/></Router>);
+  expect(onDidMount).toHaveBeenCalledTimes(1)
+});
+
 test('Main renders a snapshot properly', () => {
   const tree = renderer.create(<Main/>).toJSON();
   expect(tree).toMatchSnapshot();

@@ -9,10 +9,12 @@ import NavBar from '../NavBar';
 test('NavBar renders properly', () => {
   const title = 'Hello, World!';
   const wrapper = shallow(<NavBar title={title}/>);
-  const element = wrapper.find('Link');
-  expect(element.length).toBe(2);
-  expect(element.get(0).props.children).toBe(title);
-  expect(element.get(1).props.children).toBe('About');
+  //console.log(wrapper.debug());
+  const element = wrapper.find('d');
+  expect(element.length).toBe(7);
+  expect(element.get(2).props.children).toBe(title);
+  expect(element.get(4).props.children).toBe('About');
+  expect(element.get(6).props.children).toBe('At the end');
 });
 
 test('NavBar renders a snapshot properly', () => {
