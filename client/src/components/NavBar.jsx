@@ -6,7 +6,7 @@ import { Navbar } from 'react-bulma-components';
 const NavBar = (props) => (
     <Navbar color="dark">
       <Navbar.Brand>
-        <Navbar.Item renderAs="a" href="#">
+        <Navbar.Item renderAs="div" href="#">
             <Navbar.Item href="/">{props.title}</Navbar.Item>
         </Navbar.Item>
         <Navbar.Burger/>

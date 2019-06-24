@@ -6,6 +6,44 @@ exports[`Main renders a snapshot properly 1`] = `
     This is my App.(Main)
   </p>
   <div
+    className="control"
+    onChange={[Function]}
+  >
+    <label
+      className="radio"
+    >
+      <input
+        defaultChecked={true}
+        name="thermalPowerGenerationCO2Year"
+        type="radio"
+        value="0"
+      />
+      2015
+    </label>
+    <label
+      className="radio"
+    >
+      <input
+        defaultChecked={false}
+        name="thermalPowerGenerationCO2Year"
+        type="radio"
+        value="1"
+      />
+      2016
+    </label>
+    <label
+      className="radio"
+    >
+      <input
+        defaultChecked={false}
+        name="thermalPowerGenerationCO2Year"
+        type="radio"
+        value="2"
+      />
+      2017
+    </label>
+  </div>
+  <div
     style={
       Object {
         "height": 200,

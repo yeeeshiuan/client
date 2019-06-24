@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import 'react-bulma-components/dist/react-bulma-components.min.css';
 
 import axios from 'axios';
 
@@ -13,6 +14,7 @@ class Main extends Component {
         };
 
         this.data = {};
+        this.dataKey =[];
 
         this.getData = this.getData.bind(this);
         this.thermalPowerGenerationCO2 = this.thermalPowerGenerationCO2.bind(this);
@@ -76,10 +78,15 @@ class Main extends Component {
         });
         
         this.data = result;
-        this.thermalPowerGenerationCO2Action(0);
+        this.dataKey = Object.keys(this.data);
+        this.thermalPowerGenerationCO2Action( 0 );
     }
     // 選擇呈現的資料
     thermalPowerGenerationCO2Action(index) {
+        if ( index !== 0 ) {
+            index = parseInt(index.target.value, 10);
+            
+        }
         this.setState({ dataChoosed: this.data[index][Object.keys(this.data[index])[0]] });
     }
 
@@ -87,6 +94,29 @@ class Main extends Component {
         return (
                 <div>
                     <p>This is my App.(Main)</p>
+                    <div className="control" onChange={this.thermalPowerGenerationCO2Action}>
+                        <label className="radio">
+                            <input type="radio" 
+                                   name="thermalPowerGenerationCO2Year"
+                                   value="0"
+                                   defaultChecked={this.state.indexThermalPowerGenerationCO2 === 0} />
+                        2015
+                        </label>
+                        <label className="radio">
+                            <input type="radio" 
+                                   name="thermalPowerGenerationCO2Year"
+                                   value="1"
+                                   defaultChecked={this.state.indexThermalPowerGenerationCO2 === 1} />
+                        2016
+                        </label>
+                        <label className="radio">
+                            <input type="radio" 
+                                   name="thermalPowerGenerationCO2Year"
+                                   value="2"
+                                   defaultChecked={this.state.indexThermalPowerGenerationCO2 === 2} />
+                        2017
+                        </label>
+                    </div>
                     <div style={{height: 200}}>
                         <MyResponsivePie data={this.state.dataChoosed} />
                     </div>

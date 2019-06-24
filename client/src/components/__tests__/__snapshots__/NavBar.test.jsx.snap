@@ -10,7 +10,7 @@ exports[`NavBar renders a snapshot properly 1`] = `
     className="navbar-brand"
     style={Object {}}
   >
-    <a
+    <div
       className="navbar-item"
       href="#"
       style={Object {}}
@@ -20,7 +20,7 @@ exports[`NavBar renders a snapshot properly 1`] = `
         href="/"
         style={Object {}}
       />
-    </a>
+    </div>
     <div
       className="navbar-burger"
       onClick={[Function]}
