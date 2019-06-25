@@ -10,18 +10,13 @@ exports[`NavBar renders a snapshot properly 1`] = `
     className="navbar-brand"
     style={Object {}}
   >
-    <div
+    <a
       className="navbar-item"
-      href="#"
+      href="/"
       style={Object {}}
-    >
-      <a
-        className="navbar-item"
-        href="/"
-        style={Object {}}
-      />
-    </div>
+    />
     <div
+      active="false"
       className="navbar-burger"
       onClick={[Function]}
       role="button"
@@ -38,6 +33,7 @@ exports[`NavBar renders a snapshot properly 1`] = `
     </div>
   </div>
   <div
+    active="false"
     className="navbar-menu"
     style={Object {}}
   >
