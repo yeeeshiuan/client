@@ -38,7 +38,9 @@ class Main extends Component {
 
         axios(options)
         .then(response => { 
-            this.thermalPowerGenerationCO2(response.data);
+            if ( response.data.status === "success" ) {
+                this.thermalPowerGenerationCO2(response.data);
+            }
         })
     }
     // 處理得到的資料
@@ -83,11 +85,12 @@ class Main extends Component {
     }
     // 選擇呈現的資料
     thermalPowerGenerationCO2Action(index) {
-        if ( index !== 0 ) {
-            index = parseInt(index.target.value, 10);
-            
+        if ( Object.keys(this.data).length !== 0 ) {
+            if ( index !== 0 ) {
+                index = parseInt(index.target.value, 10);
+            }
+            this.setState({ dataChoosed: this.data[index][Object.keys(this.data[index])[0]] });
         }
-        this.setState({ dataChoosed: this.data[index][Object.keys(this.data[index])[0]] });
     }
 
     render() {
