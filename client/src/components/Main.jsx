@@ -52,10 +52,10 @@ class Main extends Component {
         message.forEach(function(element) {
             let colorIndex = count % 3;
             let year = {};
-            let nowYear =  element[Object.keys(element)[0]];
+            let nowYear =  element["年度"];
             let isYearExist = false;
             for (let index = 0; index < result.length; ++index) {
-                if ( element[Object.keys(element)[0]] in result[index] ) {
+                if ( element["年度"] in result[index] ) {
                     isYearExist = true;
                     year = result[index];
                     break;
