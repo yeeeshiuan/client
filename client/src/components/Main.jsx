@@ -45,17 +45,17 @@ class Main extends Component {
     }
     // 處理得到的資料
     thermalPowerGenerationCO2(data) {
-
         let result = [];
         let count = 0;
         let colorSet = ["hsl(130, 70%, 50%)", "hsl(81, 70%, 50%)", "hsl(186, 70%, 50%)"];
-        data.message.forEach(function(element) {
+        let message = JSON.parse(data.message);
+        message.forEach(function(element) {
             let colorIndex = count % 3;
             let year = {};
-            let nowYear =  element["年度"];
+            let nowYear =  element[Object.keys(element)[0]];
             let isYearExist = false;
             for (let index = 0; index < result.length; ++index) {
-                if ( element["年度"] in result[index] ) {
+                if ( element[Object.keys(element)[0]] in result[index] ) {
                     isYearExist = true;
                     year = result[index];
                     break;
@@ -78,7 +78,6 @@ class Main extends Component {
             
             count += 1;
         });
-        
         this.data = result;
         this.dataKey = Object.keys(this.data);
         this.thermalPowerGenerationCO2Action( 0 );
